@@ -1,113 +1,307 @@
+"use client"
 import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Home() {
+  const [open,setOpen] = useState(false)
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <div className=' overflow-x-hidden relative w-screen h-screen'>
+      {open && (
+        <div className=' top-[72px] md:hidden flex h-full z-40  left-0 bg-nav-menu bg-no-repeat bg-right-bottom bg-contain w-full bg-custom-300 fixed '>
+          <div className='font-karla pt-10 justify-start h-full  space-y-7 items-center text-white w-full flex flex-col'>
+            <Link onClick={()=>{setOpen(false)}} href={"/"}>
+              HOW WE WOR
+            </Link>
+            <Link onClick={()=>{setOpen(false)}} href={"/"}>
+              BLOG
+            </Link>
+            <Link onClick={()=>{setOpen(false)}} href={"/"}>
+              ACCOUNT
+            </Link>
+            <button onClick={()=>{setOpen(false)}} className=' w-10/12 hover:bg-white hover:text-black text-white py-1 px-3 border-2 border-white'>
+              VIEW PLANS
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className=' bg-white px-6  md:px-10 lg:px-20   xl:px-40 py-5 w-full flex flex-row justify-between items-center'>
+        <div>
+          <Image
+          src={"/images/logo.svg"}
+          width={128}
+          height={18}
+          alt='logo'/>
+        </div>
+        <button onClick={()=>{setOpen(!open)}} className=' md:hidden flex'>
+          <Image
+          src= { !open ? "/images/icon-hamburger.svg" : "/images/icon-close.svg"}
+          width={32}
+          height={32}
+          alt='menu'/>
+        </button>
+        <div className=' md:flex hidden z-30 font-karla justify-center items-center text-custom-400 space-x-5 flex-row'>
+          <Link href={"/"}>
+            HOW WE WOR
+          </Link>
+          <Link href={"/"}>
+            BLOG
+          </Link>
+          <Link href={"/"}>
+            ACCOUNT
+          </Link>
+          <button className=' hover:bg-black hover:text-white text-black py-1 px-3 border-2 border-black'>
+            VIEW PLANS
+          </button>
+        </div>
+        <Image 
+        src={"/images/bg-pattern-intro-right-desktop.svg"}
+        width={436}
+        height={593}
+        className=' md:flex hidden absolute top-[76px]  z-20 right-0 lg:w-[436px] lg:h-[593px] md:w-[356px] md:h-[513px] '
+        alt='pattern-top-right'/>
+        <Image 
+        src={"/images/image-intro-desktop.jpg"}
+        width={540}
+        height={650}
+        className='md:flex hidden  absolute xl:top-40 lg:top-60 md:top-64 z-10 md:right-20 lg:right-40 xl:h-[650px] xl:w-[540px] lg:h-[500px] lg:w-[390px] md:w-[350px] md:h-[460px]'
+        alt='pattern-top-right'/>
+        <Image 
+        src={"/images/bg-pattern-intro-left-desktop.svg"}
+        width={195}
+        height={504}
+        className='md:flex hidden  absolute md:top-[550px] lg:top-[490px] z-20 left-0 lg:w-[195px] lg:h-[504px] md:w-[145px] md:h-[454px]'
+        alt='pattern-top-left'/>
+      </div>  
+      
+      <div className=' w-full flex flex-col  justify-center bg-custom-100 md:h-[600px]'>
+        <div>
+          <Image
+          src={"/images/image-intro-mobile.jpg"}
+          width={375}
+          height={451}
+          className=' w-full md:hidden flex'
+          alt='mobile'/>
+        </div>
+        <div className=' relative space-y-7 md:py-0 py-20 flex justify-center items-center flex-col w-full md:w-1/2'>
+          <div className=' md:hidden flex'>
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            src={"/images/bg-pattern-intro-left-mobile.svg"}
+            width={168}
+            height={165}
+            className='absolute top-0 left-0 '
+            alt='left-mobile'/>
+          </div>
+          <div className=' md:hidden flex'>
+            <Image
+            src={"/images/bg-pattern-intro-right-mobile.svg"}
+            width={124}
+            height={330}
+            className='absolute -bottom-44 right-0 '
+            alt='right-mobile'/>
+          </div>
+          <div className=' hidden md:flex w-2/3 justify-start items-start'>
+            <hr  className="w-48 h-[1px] bg-white border-0 rounded" />
+          </div>
+          <div className='  z-10 w-2/3 md:text-start text-center text-custom-500 text-5xl'>
+            Humanizing your insurance.
+          </div>
+          <div className=' w-2/3 md:text-start text-center text-white font-karla'> 
+            Get your life insurance coverage easier and faster. We blend our expertise and technology to help you find the plan that’s right for you. Ensure you and your loved ones are protected
+          </div>
+          <div className=' w-2/3 flex justify-center items-center md:justify-start md:items-start'>
+            <button className='  z-10 text-white py-1 px-3 border-2 border-white font-karla hover:bg-white hover:text-black'>
+              VIEW PLANS
+            </button>
+          </div>
+        </div>
+        
+      </div>
+      <div className=' flex md:justify-start md:items-start justify-center items-center space-y-10 md:px-10 lg:px-20 xl:px-40 pt-40 md:pt-80 flex-col'>
+        <div className=' flex w-2/3 md:justify-start md:items-start justify-center items-center'>
+          <hr  className="w-48 h-[1px] bg-gray-700 border-0 rounded" />
+        </div>
+        <div className=' md:text-start text-center text-5xl'>
+          We're different
+        </div>
+        <div className=' pt-10 space-y-5 md:space-y-0 space-x-0 md:space-x-5 flex flex-col md:flex-row'>
+          <div className=' flex md:justify-start md:items-start justify-center items-center space-y-6 w-full md:w-1/3 flex-col'>
+            <div>
+              <Image
+              src={"/images/icon-snappy-process.svg"}
+              width={86}
+              height={86}
+              alt='snappy'/>
+            </div>
+            <div className=' text-2xl'>
+              Snappy Process
+            </div>
+            <div className='md:px-0 px-5 text-center md:text-start text-custom-400 font-karla'>
+              Our application process can be completed in minutes, not hours. Don’t get stuck filling in tedious forms.
+            </div>
+          </div>
+          <div className=' flex md:justify-start md:items-start justify-center items-center space-y-6 w-full md:w-1/3 flex-col'>
+            <div>
+              <Image
+              src={"/images/icon-affordable-prices.svg"}
+              width={86}
+              height={86}
+              alt='affordable'/>
+            </div>
+            <div className=' text-2xl'>
+              Affordable Prices
+            </div>
+            <div className='md:px-0 px-5 text-center md:text-start text-custom-400 font-karla'>
+              We don’t want you worrying about high monthly costs. Our prices may be low, but we still offer the best coverage possible.
+            </div>
+          </div>
+          <div className=' flex md:justify-start md:items-start justify-center items-center space-y-6 w-full md:w-1/3 flex-col'>
+            <div>
+              <Image
+              src={"/images/icon-people-first.svg"}
+              width={86}
+              height={86}
+              alt='snappy'/>
+            </div>
+            <div className=' text-2xl'>
+              People First
+            </div>
+            <div className='md:px-0 px-5 text-center md:text-start text-custom-400 font-karla'>
+              Our plans aren’t full of conditions and clauses to prevent payouts. We make sure you’re covered when you need it.
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className=' py-40 px-5 md:px-10 lg:px-16 xl:px-40'>
+        <div className=' space-y-5 md:space-y-0 bg-how-we-work-mobile p-14 flex md:bg-how-we-work-desktop bg-no-repeat bg-right bg-custom-100 flex-col md:flex-row'>
+          <div className=' md:text-start text-center text-4xl md:text-5xl w-full md:w-1/2 text-white '> 
+            Find out more about how we work
+          </div>
+          <div className=' w-full md:w-1/2 justify-center items-center flex md:justify-end md:items-center'>
+            <button className=' text-white py-1 px-3 border-2 border-white font-karla hover:bg-white hover:text-black'>
+              How We Work
+            </button>
+          </div>
+        </div>
       </div>
+      <div className=' bg-custom-500 md:px-10 lg:px-20 xl:px-40 pb-20 bg-footer-desktop bg-no-repeat bg-left-top'>
+        <div className=' space-y-10 md:space-y-0 pb-5 pt-10 flex flex-col md:flex-row justify-start md:justify-between'>
+          <div className=' md:justify-normal md:items-start justify-center items-center flex'>
+            <Image
+            src={"/images/logo.svg"}
+            width={128}
+            height={18}
+            alt='logo'/>
+          </div>
+          <div className=' md:justify-normal md:items-start justify-center items-center flex flex-row space-x-3'>
+            <Link href={"/"}>
+              <Image
+              src={"/images/icon-facebook.svg"}
+              width={24}
+              height={24}
+              alt='facebook'/>
+            </Link>
+            <Link href={"/"}>
+              <Image
+              src={"/images/icon-twitter.svg"}
+              width={24}
+              height={24}
+              alt='twitter'/>
+            </Link>
+            <Link href={"/"}>
+              <Image
+              src={"/images/icon-pinterest.svg"}
+              width={24}
+              height={24}
+              alt='pinterest'/>
+            </Link>
+            <Link href={"/"}>
+              <Image
+              src={"/images/icon-instagram.svg"}
+              width={24}
+              height={24}
+              alt='instagram'/>
+            </Link>
+          </div>
+        </div>
+        <hr />
+        <div className=' pt-10 space-y-10 md:space-y-0 flex flex-col md:flex-row'>
+          <div className='font-karla flex flex-col w-full md:w-1/4 justify-center items-center md:justify-normal md:items-start'>
+            <div className=' font-bold text-custom-400 '>
+              OUR COMPANY 
+            </div>
+            <div className=' pt-10 flex flex-col space-y-3'>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                HOW WE WORK
+              </Link>
+              <Link className='  text-center md:text-start hover:underline font-bold' href={"/"}>
+                WHY INSURE?
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                VIEW PLANS
+              </Link> 
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                REVIEWS
+              </Link>
+            </div>
+          </div>
+          <div className='font-karla flex flex-col w-full md:w-1/4 justify-center items-center md:justify-normal md:items-start'>
+            <div className=' font-bold text-custom-400 '>
+              HELP ME
+            </div>
+            <div className=' pt-10 flex flex-col space-y-3'>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                FAQ
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                TERMS OF US
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                PRIVACY POLICY
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                COOKIES
+              </Link>
+            </div>
+          </div>
+          <div className='font-karla flex flex-col w-full md:w-1/4 justify-center items-center md:justify-normal md:items-start'>
+            <div className=' font-bold text-custom-400 '>
+              CONTACT
+            </div>
+            <div className=' pt-10 flex flex-col space-y-3'>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                SALES
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                SUPPORT
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                LIVE CHAT
+              </Link>
+            </div>
+          </div>
+          <div className='font-karla flex flex-col w-full md:w-1/4 justify-center items-center md:justify-normal md:items-start'>
+            <div className=' font-bold text-custom-400 '>
+              OTHERS
+            </div>
+            <div className=' pt-10 flex flex-col space-y-3'>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                CAREERS
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                PRESS
+              </Link>
+              <Link className=' text-center md:text-start hover:underline font-bold' href={"/"}>
+                LICENSES
+              </Link>
+            </div>
+          </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
       </div>
-    </main>
-  )
-}
+    </div>
+  )}
+    
